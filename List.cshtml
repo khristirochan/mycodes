@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Employee_MVC.Models.EmployeeModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@Html.Raw(TempData["insertmsg"])
+@Html.Raw(TempData["editmsg"])
+@Html.Raw(TempData["deletemsg"])
+@Html.Raw(TempData["deleteErrMsg"])
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=>model.Emp_Profile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_Email)
+        </th>
+        <th>Manage</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        <img src="@item.Emp_Profile" asp-append-version="true" style="height:100px;width:100px;" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Emp_Firstname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Emp_Lastname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Emp_Department)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Emp_MobileNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Emp_Email)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Emp_Id }) |
+        @*@Html.ActionLink("Details", "Details", new { id = item.Emp_Id }) |*@
+        @Html.ActionLink("Delete", "Delete", new { id = item.Emp_Id })
+    </td>
+</tr>
+    }
+
+</table>
